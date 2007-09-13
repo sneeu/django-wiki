@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<title>{{ page.name }} &mdash; Wiki</title>
+
+	<style media="screen,projection" type="text/css">
+		body {
+			background: #fff;
+			color: #222;
+			font: 100%/1.5em "Lucida Grande",Helvetica,Arial,sans-serif;
+			margin: 1.5em auto 0;
+			padding: 0;
+			width: 40em;
+		}
+		a {
+			border-bottom: 1px solid;
+			color: #03c;
+			padding-bottom: 1px;
+			text-decoration: none;
+		}
+		a:hover {
+			color: #c00;
+		}
+		h1 {
+			font-size: 3em;
+			line-height: 1em;
+			margin: 0;
+			padding: 0 0 0.5em;
+		}
+		p {
+			line-height: 1.5em;
+			margin: 0;
+			padding: 0 0 1.5em;
+		}
+		ul {
+			list-style: square;
+			margin: 0;
+			padding: 0 0 1.5em;
+		}
+		input {
+			font-size: 1em;
+			line-height: 1.5em;
+		}
+		textarea {
+			font-size: 1em;
+			height: 10em;
+			width: 100%;
+		}
+		.footer {
+			border-top: 1px solid #ccc;
+			color: #999;
+			font-size: 0.8333em;
+			line-height: 1.8em;
+			margin-top: -1px;
+		}
+		.errorlist {
+			color: #c00;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+
+</head>
+<body>
+
+	<div id="body">
+		{% block content %}{% endblock %}
+		<p class="footer"><a href="/">List all pages</a> | {% block footer %}{% endblock %}Powered by <a href="http://code.google.com/p/django-wiki/">Wiki</a></p>
+	</div>
+
+</body>
+</html>
