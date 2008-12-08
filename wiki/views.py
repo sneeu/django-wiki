@@ -7,11 +7,13 @@ from models import Page
 
 
 def index(request):
+    """Lists all pages stored in the wiki."""
     pages = Page.objects.all()
     return render_to_response('wiki/index.html', {'pages': pages})
 
 
 def view(request, name):
+    """Shows a single wiki page."""
     try:
         page = Page.objects.get(name=name)
     except Page.DoesNotExist:
@@ -21,6 +23,7 @@ def view(request, name):
 
 
 def edit(request, name):
+    """Allows users to edit wiki pages."""
     try:
         page = Page.objects.get(name=name)
     except Page.DoesNotExist:

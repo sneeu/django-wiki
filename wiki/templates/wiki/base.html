@@ -68,7 +68,7 @@
 
 	<div id="body">
 		{% block content %}{% endblock %}
-		<p class="footer"><a href="/">List all pages</a> | {% block footer %}{% endblock %}Powered by <a href="http://code.google.com/p/django-wiki/">Wiki</a></p>
+		<p class="footer"><a href="{% url wiki.views.index %}">List all pages</a> | {% block footer %}{% endblock %}Powered by <a href="http://code.google.com/p/django-wiki/">Wiki</a></p>
 	</div>
 
 </body>

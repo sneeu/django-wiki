@@ -1,12 +1,11 @@
-from django import newforms as forms
-from django.newforms import widgets
+from django import forms as forms
 
 from models import Page
 
 
 class PageForm(forms.Form):
     name = forms.CharField(max_length=255)
-    content = forms.CharField(widget=widgets.Textarea())
+    content = forms.CharField(widget=forms.Textarea())
 
     def clean_name(self):
         import re

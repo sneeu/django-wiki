@@ -4,20 +4,16 @@ from templatetags.wiki import wikify
 
 
 class Page(models.Model):
-    name = models.CharField(maxlength=255, unique=True)
+    name = models.CharField(max_length=255, unique=True)
     content = models.TextField()
     rendered = models.TextField()
 
-    class Admin:
-        fields = (
-            None, {
-                'fields': ('name', 'content',)
-            }
-        )
+    class Meta:
+        ordering = ('name', )
 
-    def save(self):
+    def __unicode__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
         self.rendered = wikify(self.content)
-        super(Page, self).save()
-
-    def __str__(self):
-        return '%s\n%s\n\n%s' % (self.name, '-' * 40, self.content)
+        super(Page, self).save(*args, **kwargs)
