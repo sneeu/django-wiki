@@ -1,6 +1,5 @@
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render_to_response, redirect
 
 from forms import PageForm
 from models import Page
@@ -38,7 +37,7 @@ def edit(request, name):
             page.content = form.cleaned_data['content']
 
             page.save()
-            return HttpResponseRedirect('../../%s/' % page.name)
+            return redirect(view, name=page.name)
     else:
         if page:
             form = PageForm(initial=page.__dict__)
