@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render_to_response, redirect
+from django.template import RequestContext
 
 from forms import PageForm
 from models import Page
@@ -44,4 +45,5 @@ def edit(request, name):
         else:
             form = PageForm(initial={'name': name})
 
-    return render_to_response('wiki/edit.html', {'form': form})
+    return render_to_response('wiki/edit.html', {'form': form},
+        RequestContext(request))

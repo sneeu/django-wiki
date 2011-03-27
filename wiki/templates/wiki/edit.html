@@ -4,7 +4,7 @@
 {% block content %}
 	<h1>Edit</h1>
 
-	<form action="" method="post">
+	<form action="" method="post">{% csrf_token %}
 
 		<div class="field_wrapper required{% if form.name.errors %} errors{% endif %}" id="field_name">
 			<label for="id_name" class="field_name"><strong>Page name</strong></label>
