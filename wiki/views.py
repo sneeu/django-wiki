@@ -1,5 +1,4 @@
-from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404, render_to_response, redirect
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 
 from forms import PageForm
@@ -8,8 +7,12 @@ from models import Page
 
 def index(request):
     """Lists all pages stored in the wiki."""
-    pages = Page.objects.all()
-    return render_to_response('wiki/index.html', {'pages': pages})
+    context = {
+        'pages': Page.objects.all(),
+    }
+
+    return render_to_response('wiki/index.html',
+        RequestContext(request, context))
 
 
 def view(request, name):
@@ -19,7 +22,12 @@ def view(request, name):
     except Page.DoesNotExist:
         page = Page(name=name)
 
-    return render_to_response('wiki/view.html', {'page': page})
+    context = {
+        'page': page,
+    }
+
+    return render_to_response('wiki/view.html',
+        RequestContext(request, context))
 
 
 def edit(request, name):
@@ -45,5 +53,9 @@ def edit(request, name):
         else:
             form = PageForm(initial={'name': name})
 
-    return render_to_response('wiki/edit.html', {'form': form},
-        RequestContext(request))
+    context = {
+        'form': form,
+    }
+
+    return render_to_response('wiki/edit.html',
+        RequestContext(request, context))
